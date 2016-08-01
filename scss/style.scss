@@ -1,0 +1,121 @@
+$mainColor: #337ab7;
+$mainFont: Monospace;
+@mixin border-schtelling($border-radius: 5px, $border: 2px solid $mainColor){
+  
+  
+  border: $border;
+  border-radius: $border-radius;
+  
+}
+// for username-span
+@mixin margin-schtelling($margin-left, $margin-rigth){
+  margin-left: $margin-left;
+  margin-right: $margin-rigth;
+}
+
+body {
+  color: $mainColor;
+  font-family: $mainFont;
+}
+
+#main {
+  width: 70%;
+  margin: 10px auto;
+}
+
+#main header {  
+  @include border-schtelling();
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.styleHeaderAndFrame {
+  padding: 0 15px;
+}
+
+.headerInfo, .users {
+  @extend .styleHeaderAndFrame;
+}
+
+.picture {
+  display: block;
+  width: 40px;
+  margin: 2px auto;
+  border-radius: 50%;
+}
+
+
+.row{ 
+  
+  overflow: hidden;
+  padding: 0 !important;
+  
+  div {
+    @include border-schtelling();
+  }
+}
+
+[class*="col-"] {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+  
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  
+  &:not([class*="user-name-"]){
+  
+    text-align: center;
+    padding-top: 20px;
+    
+  }
+
+}
+
+.brownie {
+  width: 25px;
+}
+
+.username-span {
+  background-color: $mainColor;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: bold;
+  padding-left: 3px;
+  padding-right: 3px;
+  @include margin-schtelling(20%, 20%);
+  display: block;
+  text-align: center;
+}
+
+@media only screen and (max-width: 750px){
+  
+  .username-span {
+    @include margin-schtelling(10%, 10%);
+    font-size: 9px;
+  }
+  
+   [class*="col-"]:first-child{
+    word-wrap: break-word;
+    width: 5%;
+    padding-top: 2px;
+  }
+  
+  #main header {
+    margin-right: 3%;
+  }
+  
+  
+  
+}
+
+@media only screen and (min-width: 611px) and (max-width: 750px){
+  [class*="col-"]:first-child{
+    width: 4%;
+  }
+  
+    
+  #main header {
+    margin-right: 4%;
+  }
+}
